@@ -1,0 +1,148 @@
+{
+  "trainers": [
+    {
+      "id": 1,
+      "name": "青绿",
+      "title": "Champion",
+      "location_id": 101,
+      "team": [
+        {
+          "pokemon_id": 25,
+          "level": 5
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "馆主1",
+      "title": "Gym Leader",
+      "location_id": 104,
+      "team": [
+        {
+          "pokemon_id": 4,
+          "level": 12
+        },
+        {
+          "pokemon_id": 58,
+          "level": 13
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "馆主2",
+      "title": "Gym Leader",
+      "location_id": 105,
+      "team": [
+        {
+          "pokemon_id": 7,
+          "level": 18
+        },
+        {
+          "pokemon_id": 54,
+          "level": 19
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "馆主3",
+      "title": "Gym Leader",
+      "location_id": 106,
+      "team": [
+        {
+          "pokemon_id": 129,
+          "level": 20
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "馆主4",
+      "title": "Gym Leader",
+      "location_id": 107,
+      "team": [
+        {
+          "pokemon_id": 25,
+          "level": 22
+        },
+        {
+          "pokemon_id": 39,
+          "level": 23
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "馆主5",
+      "title": "Gym Leader",
+      "location_id": 108,
+      "team": [
+        {
+          "pokemon_id": 63,
+          "level": 24
+        },
+        {
+          "pokemon_id": 6,
+          "level": 25
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "馆主6",
+      "title": "Gym Leader",
+      "location_id": 109,
+      "team": [
+        {
+          "pokemon_id": 5,
+          "level": 30
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "馆主7",
+      "title": "Gym Leader",
+      "location_id": 109,
+      "team": [
+        {
+          "pokemon_id": 3,
+          "level": 32
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "宝可梦联盟冠军",
+      "title": "Champion",
+      "location_id": 110,
+      "team": [
+        {
+          "pokemon_id": 3,
+          "level": 50
+        },
+        {
+          "pokemon_id": 6,
+          "level": 50
+        },
+        {
+          "pokemon_id": 9,
+          "level": 50
+        },
+        {
+          "pokemon_id": 25,
+          "level": 50
+        },
+        {
+          "pokemon_id": 39,
+          "level": 50
+        },
+        {
+          "pokemon_id": 63,
+          "level": 50
+        }
+      ]
+    }
+  ]
+}

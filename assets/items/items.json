@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "精灵球",
+      "english_name": "Poké Ball",
+      "item_type": "PokeBall",
+      "description": "用来捕捉宝可梦的道具",
+      "price": 100,
+      "recovery_percent": null,
+      "is_revive": false,
+      "is_healing": false
+    },
+    {
+      "id": 2,
+      "name": "恢复药",
+      "english_name": "Potion",
+      "item_type": "Potion",
+      "description": "恢复宝可梦 50% 的 HP",
+      "price": 150,
+      "recovery_percent": 50,
+      "is_revive": false,
+      "is_healing": true
+    },
+    {
+      "id": 3,
+      "name": "超级恢复药",
+      "english_name": "Super Potion",
+      "item_type": "SuperPotion",
+      "description": "完全恢复宝可梦的 HP",
+      "price": 250,
+      "recovery_percent": 100,
+      "is_revive": false,
+      "is_healing": true
+    },
+    {
+      "id": 4,
+      "name": "全复活",
+      "english_name": "Revive",
+      "item_type": "Revive",
+      "description": "让昏迷的宝可梦复活，恢复 50% HP",
+      "price": 200,
+      "recovery_percent": 50,
+      "is_revive": true,
+      "is_healing": false
+    },
+    {
+      "id": 5,
+      "name": "完全恢复",
+      "english_name": "Full Restore",
+      "item_type": "FullRestore",
+      "description": "让昏迷的宝可梦复活，完全恢复 HP",
+      "price": 400,
+      "recovery_percent": 100,
+      "is_revive": true,
+      "is_healing": false
+    },
+    {
+      "id": 6,
+      "name": "解毒药",
+      "english_name": "Antidote",
+      "item_type": "Antidote",
+      "description": "解除宝可梦的中毒状态",
+      "price": 100,
+      "recovery_percent": null,
+      "is_revive": false,
+      "is_healing": false
+    }
+  ]
+}

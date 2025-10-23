@@ -1,0 +1,225 @@
+{
+  "locations": [
+    {
+      "id": 101,
+      "name": "常青小镇",
+      "description": "宁静祥和的小镇，你的冒险从这里开始",
+      "environment": "Grassland",
+      "encounter_rate": 0.3,
+      "is_starting_location": true,
+      "connections": [102],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 25,
+          "spawn_rate": 50.0,
+          "level_min": 2,
+          "level_max": 4
+        },
+        {
+          "pokemon_id": 10,
+          "spawn_rate": 50.0,
+          "level_min": 2,
+          "level_max": 4
+        }
+      ],
+      "npcs": [1]
+    },
+    {
+      "id": 102,
+      "name": "常青森林",
+      "description": "茂密的森林，小宝可梦的家园",
+      "environment": "Forest",
+      "encounter_rate": 0.8,
+      "is_starting_location": false,
+      "connections": [101, 103],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 1,
+          "spawn_rate": 40.0,
+          "level_min": 2,
+          "level_max": 5
+        },
+        {
+          "pokemon_id": 10,
+          "spawn_rate": 60.0,
+          "level_min": 3,
+          "level_max": 6
+        }
+      ],
+      "npcs": []
+    },
+    {
+      "id": 103,
+      "name": "华石镇",
+      "description": "靠近山脉的小镇，有许多稀有宝可梦",
+      "environment": "Mountain",
+      "encounter_rate": 0.6,
+      "is_starting_location": false,
+      "connections": [102, 104],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 4,
+          "spawn_rate": 50.0,
+          "level_min": 5,
+          "level_max": 8
+        },
+        {
+          "pokemon_id": 58,
+          "spawn_rate": 50.0,
+          "level_min": 5,
+          "level_max": 8
+        }
+      ],
+      "npcs": []
+    },
+    {
+      "id": 104,
+      "name": "月见山",
+      "description": "高耸的山脉，环境恶劣但资源丰富",
+      "environment": "Cave",
+      "encounter_rate": 0.7,
+      "is_starting_location": false,
+      "connections": [103, 105],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 4,
+          "spawn_rate": 40.0,
+          "level_min": 7,
+          "level_max": 10
+        },
+        {
+          "pokemon_id": 58,
+          "spawn_rate": 40.0,
+          "level_min": 7,
+          "level_max": 10
+        },
+        {
+          "pokemon_id": 63,
+          "spawn_rate": 20.0,
+          "level_min": 8,
+          "level_max": 11
+        }
+      ],
+      "npcs": [2]
+    },
+    {
+      "id": 105,
+      "name": "华蓝市",
+      "description": "靠近水边的美丽城市，有许多水系宝可梦",
+      "environment": "Water",
+      "encounter_rate": 0.5,
+      "is_starting_location": false,
+      "connections": [104, 106, 107],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 54,
+          "spawn_rate": 50.0,
+          "level_min": 15,
+          "level_max": 18
+        },
+        {
+          "pokemon_id": 7,
+          "spawn_rate": 50.0,
+          "level_min": 15,
+          "level_max": 18
+        }
+      ],
+      "npcs": [3]
+    },
+    {
+      "id": 106,
+      "name": "海滨镇",
+      "description": "繁忙的港口城市，有许多商人",
+      "environment": "City",
+      "encounter_rate": 0.3,
+      "is_starting_location": false,
+      "connections": [105, 108],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 129,
+          "spawn_rate": 100.0,
+          "level_min": 18,
+          "level_max": 22
+        }
+      ],
+      "npcs": [4]
+    },
+    {
+      "id": 107,
+      "name": "金黄市",
+      "description": "繁华的大都市，馆主是职业选手",
+      "environment": "City",
+      "encounter_rate": 0.2,
+      "is_starting_location": false,
+      "connections": [105, 109],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 25,
+          "spawn_rate": 50.0,
+          "level_min": 20,
+          "level_max": 24
+        },
+        {
+          "pokemon_id": 39,
+          "spawn_rate": 50.0,
+          "level_min": 20,
+          "level_max": 24
+        }
+      ],
+      "npcs": [5]
+    },
+    {
+      "id": 108,
+      "name": "紫苑镇",
+      "description": "古老而神秘的城镇，传说这里有超古代遗迹",
+      "environment": "Cave",
+      "encounter_rate": 0.6,
+      "is_starting_location": false,
+      "connections": [106, 109],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 63,
+          "spawn_rate": 50.0,
+          "level_min": 22,
+          "level_max": 26
+        },
+        {
+          "pokemon_id": 6,
+          "spawn_rate": 50.0,
+          "level_min": 23,
+          "level_max": 27
+        }
+      ],
+      "npcs": [6]
+    },
+    {
+      "id": 109,
+      "name": "常磐市",
+      "description": "最后的挑战地点，黑暗势力的总部",
+      "environment": "Mountain",
+      "encounter_rate": 0.4,
+      "is_starting_location": false,
+      "connections": [107, 108, 110],
+      "wild_pokemon": [
+        {
+          "pokemon_id": 5,
+          "spawn_rate": 100.0,
+          "level_min": 30,
+          "level_max": 35
+        }
+      ],
+      "npcs": [7, 8]
+    },
+    {
+      "id": 110,
+      "name": "宝可梦联盟",
+      "description": "强者的殿堂，最终的冠军挑战",
+      "environment": "City",
+      "encounter_rate": 0.0,
+      "is_starting_location": false,
+      "connections": [109],
+      "wild_pokemon": [],
+      "npcs": [9]
+    }
+  ]
+}

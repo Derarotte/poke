@@ -1,0 +1,50 @@
+{
+  "environments": [
+    {
+      "type": "Grassland",
+      "name_zh": "草地",
+      "stat_bonuses": {
+        "speed": 1.1
+      }
+    },
+    {
+      "type": "Forest",
+      "name_zh": "森林",
+      "stat_bonuses": {
+        "defense": 1.1
+      }
+    },
+    {
+      "type": "Cave",
+      "name_zh": "山洞",
+      "stat_bonuses": {
+        "sp_attack": 1.1
+      }
+    },
+    {
+      "type": "Water",
+      "name_zh": "水域",
+      "stat_bonuses": {
+        "sp_defense": 1.1
+      }
+    },
+    {
+      "type": "Mountain",
+      "name_zh": "山脉",
+      "stat_bonuses": {
+        "attack": 1.1
+      }
+    },
+    {
+      "type": "City",
+      "name_zh": "城市",
+      "stat_bonuses": {
+        "attack": 1.05,
+        "defense": 1.05,
+        "sp_attack": 1.05,
+        "sp_defense": 1.05,
+        "speed": 1.05
+      }
+    }
+  ]
+}

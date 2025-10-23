@@ -1,0 +1,221 @@
+{
+  "natures": [
+    {
+      "id": "Hardy",
+      "name_en": "Hardy",
+      "name_zh": "固执",
+      "stat_modifiers": {}
+    },
+    {
+      "id": "Lonely",
+      "name_en": "Lonely",
+      "name_zh": "孤独",
+      "stat_modifiers": {
+        "attack": 1.1,
+        "defense": 0.9
+      }
+    },
+    {
+      "id": "Adamant",
+      "name_en": "Adamant",
+      "name_zh": "倔强",
+      "stat_modifiers": {
+        "attack": 1.1,
+        "sp_attack": 0.9
+      }
+    },
+    {
+      "id": "Naughty",
+      "name_en": "Naughty",
+      "name_zh": "调皮",
+      "stat_modifiers": {
+        "attack": 1.1,
+        "sp_defense": 0.9
+      }
+    },
+    {
+      "id": "Brave",
+      "name_en": "Brave",
+      "name_zh": "勇敢",
+      "stat_modifiers": {
+        "attack": 1.1,
+        "speed": 0.9
+      }
+    },
+    {
+      "id": "Bold",
+      "name_en": "Bold",
+      "name_zh": "大胆",
+      "stat_modifiers": {
+        "defense": 1.1,
+        "attack": 0.9
+      }
+    },
+    {
+      "id": "Docile",
+      "name_en": "Docile",
+      "name_zh": "和气",
+      "stat_modifiers": {}
+    },
+    {
+      "id": "Impish",
+      "name_en": "Impish",
+      "name_zh": "调皮",
+      "stat_modifiers": {
+        "defense": 1.1,
+        "sp_attack": 0.9
+      }
+    },
+    {
+      "id": "Lax",
+      "name_en": "Lax",
+      "name_zh": "懒散",
+      "stat_modifiers": {
+        "defense": 1.1,
+        "sp_defense": 0.9
+      }
+    },
+    {
+      "id": "Relaxed",
+      "name_en": "Relaxed",
+      "name_zh": "悠闲",
+      "stat_modifiers": {
+        "defense": 1.1,
+        "speed": 0.9
+      }
+    },
+    {
+      "id": "Modest",
+      "name_en": "Modest",
+      "name_zh": "谦虚",
+      "stat_modifiers": {
+        "sp_attack": 1.1,
+        "attack": 0.9
+      }
+    },
+    {
+      "id": "Mild",
+      "name_en": "Mild",
+      "name_zh": "温和",
+      "stat_modifiers": {
+        "sp_attack": 1.1,
+        "defense": 0.9
+      }
+    },
+    {
+      "id": "Quiet",
+      "name_en": "Quiet",
+      "name_zh": "冷静",
+      "stat_modifiers": {
+        "sp_attack": 1.1,
+        "speed": 0.9
+      }
+    },
+    {
+      "id": "Rash",
+      "name_en": "Rash",
+      "name_zh": "浮躁",
+      "stat_modifiers": {
+        "sp_attack": 1.1,
+        "sp_defense": 0.9
+      }
+    },
+    {
+      "id": "Calm",
+      "name_en": "Calm",
+      "name_zh": "平和",
+      "stat_modifiers": {
+        "sp_defense": 1.1,
+        "attack": 0.9
+      }
+    },
+    {
+      "id": "Gentle",
+      "name_en": "Gentle",
+      "name_zh": "温柔",
+      "stat_modifiers": {
+        "sp_defense": 1.1,
+        "defense": 0.9
+      }
+    },
+    {
+      "id": "Sassy",
+      "name_en": "Sassy",
+      "name_zh": "自大",
+      "stat_modifiers": {
+        "sp_defense": 1.1,
+        "speed": 0.9
+      }
+    },
+    {
+      "id": "Careful",
+      "name_en": "Careful",
+      "name_zh": "谨慎",
+      "stat_modifiers": {
+        "sp_defense": 1.1,
+        "sp_attack": 0.9
+      }
+    },
+    {
+      "id": "Quirky",
+      "name_en": "Quirky",
+      "name_zh": "古怪",
+      "stat_modifiers": {}
+    },
+    {
+      "id": "Sly",
+      "name_en": "Sly",
+      "name_zh": "狡猾",
+      "stat_modifiers": {
+        "speed": 1.1,
+        "attack": 0.9
+      }
+    },
+    {
+      "id": "Timid",
+      "name_en": "Timid",
+      "name_zh": "胆小",
+      "stat_modifiers": {
+        "speed": 1.1,
+        "attack": 0.9
+      }
+    },
+    {
+      "id": "Hasty",
+      "name_en": "Hasty",
+      "name_zh": "急躁",
+      "stat_modifiers": {
+        "speed": 1.1,
+        "defense": 0.9
+      }
+    },
+    {
+      "id": "Jolly",
+      "name_en": "Jolly",
+      "name_zh": "爽朗",
+      "stat_modifiers": {
+        "speed": 1.1,
+        "sp_attack": 0.9
+      }
+    },
+    {
+      "id": "Naive",
+      "name_en": "Naive",
+      "name_zh": "天真",
+      "stat_modifiers": {
+        "speed": 1.1,
+        "sp_defense": 0.9
+      }
+    },
+    {
+      "id": "Serious",
+      "name_en": "Serious",
+      "name_zh": "认真",
+      "stat_modifiers": {}
+    }
+  ],
+  "talent_probability": {
+    "normal_percent": 90,
+    "hidden_percent": 10
+  }
+}

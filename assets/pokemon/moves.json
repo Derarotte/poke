@@ -1,0 +1,81 @@
+{
+  "moves": [
+    {
+      "id": 1,
+      "name": "撞击",
+      "english_name": "Tackle",
+      "type": "Normal",
+      "category": "Physical",
+      "power": 40,
+      "accuracy": 100,
+      "pp": 35,
+      "effect": null
+    },
+    {
+      "id": 33,
+      "name": "火焰",
+      "english_name": "Ember",
+      "type": "Fire",
+      "category": "Special",
+      "power": 30,
+      "accuracy": 100,
+      "pp": 25,
+      "effect": null
+    },
+    {
+      "id": 34,
+      "name": "火焰喷射",
+      "english_name": "Flamethrower",
+      "type": "Fire",
+      "category": "Special",
+      "power": 90,
+      "accuracy": 100,
+      "pp": 15,
+      "effect": null
+    },
+    {
+      "id": 55,
+      "name": "水枪",
+      "english_name": "Water Gun",
+      "type": "Water",
+      "category": "Special",
+      "power": 40,
+      "accuracy": 100,
+      "pp": 25,
+      "effect": null
+    },
+    {
+      "id": 56,
+      "name": "泡沫",
+      "english_name": "Bubble",
+      "type": "Water",
+      "category": "Special",
+      "power": 65,
+      "accuracy": 100,
+      "pp": 20,
+      "effect": null
+    },
+    {
+      "id": 74,
+      "name": "叶片",
+      "english_name": "Leaf Blade",
+      "type": "Grass",
+      "category": "Physical",
+      "power": 55,
+      "accuracy": 100,
+      "pp": 25,
+      "effect": null
+    },
+    {
+      "id": 97,
+      "name": "电击",
+      "english_name": "Thunder Shock",
+      "type": "Electric",
+      "category": "Special",
+      "power": 40,
+      "accuracy": 100,
+      "pp": 30,
+      "effect": null
+    }
+  ]
+}

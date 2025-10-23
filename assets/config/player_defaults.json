@@ -1,0 +1,31 @@
+{
+  "starting": {
+    "location_id": 101,
+    "money": 0,
+    "inventory": [
+      {
+        "item_type": "PokeBall",
+        "quantity": 5
+      },
+      {
+        "item_type": "Potion",
+        "quantity": 3
+      },
+      {
+        "item_type": "SuperPotion",
+        "quantity": 1
+      },
+      {
+        "item_type": "Revive",
+        "quantity": 1
+      }
+    ]
+  },
+  "pokemon_center": {
+    "base_revival_cost": 200,
+    "vip_discount_percent": 50
+  },
+  "team": {
+    "max_size": 6
+  }
+}
