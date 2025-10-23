@@ -232,7 +232,7 @@ pub fn generate_pokemon(species_id: u32, level: u32) -> Result<PokemonInstance, 
 
 /// 生成完美个体值的 Pokémon
 pub fn generate_perfect_pokemon(species_id: u32, level: u32) -> Result<PokemonInstance, String> {
-    let species =
+    let _species =
         get_species(species_id).ok_or(format!("物种 {} 不存在", species_id))?;
 
     let pokemon = PokemonInstance::perfect(species_id, level);
@@ -247,7 +247,7 @@ pub fn generate_pokemon_with_ivs(
 ) -> Result<PokemonInstance, String> {
     use uuid::Uuid;
 
-    let species =
+    let _species =
         get_species(species_id).ok_or(format!("物种 {} 不存在", species_id))?;
 
     Ok(PokemonInstance {

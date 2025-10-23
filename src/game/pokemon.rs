@@ -63,6 +63,10 @@ pub struct Pokemon {
     pub stats: Stat,
     pub moves: Vec<Move>,
     pub catch_rate: u32,
+    // 捕捉信息
+    pub caught_with: String,          // 捕捉球类型
+    pub caught_location_id: u32,      // 捕捉地点 ID
+    pub caught_date: u64,             // 捕捉时间戳
 }
 
 impl Pokemon {
@@ -92,7 +96,18 @@ impl Pokemon {
             },
             moves: vec![],
             catch_rate,
+            caught_with: "Poké Ball".to_string(),
+            caught_location_id: 101, // 默认常青小镇
+            caught_date: 0,
         }
+    }
+
+    /// 设置宝可梦的捕捉信息
+    pub fn set_catch_info(mut self, ball_type: String, location_id: u32, timestamp: u64) -> Self {
+        self.caught_with = ball_type;
+        self.caught_location_id = location_id;
+        self.caught_date = timestamp;
+        self
     }
 
     pub fn calculate_hp(base_hp: u32, level: u32) -> (u32, u32) {

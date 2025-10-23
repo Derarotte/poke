@@ -33,14 +33,14 @@ impl LocationMenu {
 
     /// 显示可移动到的地点菜单
     pub fn display_movement_menu(
-        current_location: &Location,
+        _current_location: &Location,
         reachable_locations: &[(u32, String, bool)], // (id, name, is_unlocked)
     ) {
         println!("\n╔─────────────────────────────────────╗");
         println!("║     选择要前往的地点               ║");
         println!("╠─────────────────────────────────────╣");
 
-        for (idx, (id, name, is_unlocked)) in reachable_locations.iter().enumerate() {
+        for (idx, (_id, name, is_unlocked)) in reachable_locations.iter().enumerate() {
             let status = if *is_unlocked {
                 format!("✓ {}", name)
             } else {

@@ -1,4 +1,4 @@
-use super::{Pokemon, ItemType, PlayerLocationState};
+use super::{Pokemon, PlayerLocationState, StorageSystem};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -18,6 +18,7 @@ pub struct Player {
     pub money: u32,
     pub visited_pokemon_center: bool,
     pub location_state: PlayerLocationState,
+    pub storage: StorageSystem,  // 宠物仓库
 }
 
 impl Player {
@@ -37,6 +38,7 @@ impl Player {
             money: 0,
             visited_pokemon_center: false,
             location_state: PlayerLocationState::default(),
+            storage: StorageSystem::new(),
         }
     }
 
@@ -344,5 +346,61 @@ impl Player {
         self.check_new_unlocks(&crate::data::locations_data::get_all_locations());
 
         self
+    }
+
+    /// 将队伍中的宝可梦放入仓库
+    pub fn store_pokemon(&mut self, team_index: usize) -> Result<String, String> {
+        if team_index >= self.pokemons.len() {
+            return Err("宝可梦索引超出范围".to_string());
+        }
+
+        let pokemon = self.pokemons.remove(team_index);
+        let pokemon_name = pokemon.name.clone();
+
+        match self.storage.add_pokemon(pokemon) {
+            Ok((box_id, _)) => {
+                Ok(format!("已将 {} 放入仓库 (箱子 {})", pokemon_name, box_id))
+            }
+            Err(e) => Err(e),
+        }
+    }
+
+    /// 从仓库取出宝可梦到队伍
+    pub fn retrieve_pokemon(&mut self, box_id: u32, storage_index: usize) -> Result<String, String> {
+        if self.pokemons.len() >= 6 {
+            return Err("队伍已满 (6/6)，无法添加更多宝可梦".to_string());
+        }
+
+        let pokemon = self.storage.remove_pokemon(box_id, storage_index)?;
+        let pokemon_name = pokemon.name.clone();
+        self.pokemons.push(pokemon);
+        Ok(format!("已从仓库取出 {} 到队伍", pokemon_name))
+    }
+
+    /// 放生宠物
+    pub fn release_pokemon(&mut self, box_id: u32, storage_index: usize) -> Result<String, String> {
+        self.storage.release_pokemon(box_id, storage_index)
+    }
+
+    /// 自动存储超过队伍容量的宝可梦
+    pub fn auto_store_excess_pokemon(&mut self) -> Vec<String> {
+        let mut messages = Vec::new();
+
+        while self.pokemons.len() > 6 {
+            if let Some(pokemon) = self.pokemons.pop() {
+                let name = pokemon.name.clone();
+                match self.storage.add_pokemon(pokemon) {
+                    Ok((box_id, _)) => {
+                        messages.push(format!("已自动存储 {} 到仓库 (箱子 {})", name, box_id));
+                    }
+                    Err(_) => {
+                        // 仓库满了，无法继续存储
+                        break;
+                    }
+                }
+            }
+        }
+
+        messages
     }
 }

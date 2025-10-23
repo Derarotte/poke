@@ -71,7 +71,7 @@ impl RevivalMenu {
         println!("╠═════════════════════════════════════╣");
 
         let mut index = 1;
-        for (i, pokemon) in player.pokemons.iter().enumerate() {
+        for (_i, pokemon) in player.pokemons.iter().enumerate() {
             if pokemon.is_fainted() {
                 println!("║ {}. {} (等级 {})              ║", index, pokemon.name, pokemon.level);
                 index += 1;

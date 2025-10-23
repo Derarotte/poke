@@ -7,9 +7,11 @@ pub mod utils;
 pub mod map;
 pub mod npc;
 pub mod pokemon_generator;
+pub mod handlers;
 
 // 重新导出主要类型供测试使用
 pub use game::{Player, Pokemon, Battle};
 pub use map::{GameMap, Location, Region};
 pub use npc::{NPCTrainer, Difficulty};
 pub use pokemon_generator::{IndividualValues, Talent, Nature, PokemonInstance};
+pub use handlers::{GameController, EncounterManager, BattleHandler, RevivalHandler, ExplorationHandler};

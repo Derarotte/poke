@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 
 pub mod locations;
-pub use locations::{create_locations, get_location_by_id, get_locations_by_region, get_all_locations};
+pub use locations::create_locations;  // Other location functions removed - unused
 
 use crate::npc::{NPCTrainer, get_npcs_by_location};
 

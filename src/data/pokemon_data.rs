@@ -1,26 +1,117 @@
 use crate::game::{Pokemon, PokemonType, Stat, Move, MoveType};
+use crate::data::loader;
 
 pub fn get_pokemon_by_id(id: u32) -> Option<Pokemon> {
-    match id {
-        1 => Some(create_bulbasaur()),
-        2 => Some(create_ivysaur()),
-        3 => Some(create_venusaur()),
-        4 => Some(create_charmander()),
-        5 => Some(create_charmeleon()),
-        6 => Some(create_charizard()),
-        7 => Some(create_squirtle()),
-        8 => Some(create_wartortle()),
-        9 => Some(create_blastoise()),
-        10 => Some(create_caterpie()),
-        25 => Some(create_pikachu()),
-        39 => Some(create_jigglypuff()),
-        54 => Some(create_psyduck()),
-        58 => Some(create_growlithe()),
-        63 => Some(create_abra()),
-        129 => Some(create_magikarp()),
-        _ => None,
+    // Get game data from the JSON cache
+    let game_data = loader::get_game_data()?;
+
+    // Search for the Pokemon with matching ID
+    let pokemon_data = game_data.pokemon.iter().find(|p| {
+        p.get("id").and_then(|v| v.as_u64()).map(|v| v as u32) == Some(id)
+    })?;
+
+    // Extract fields from JSON
+    let name = pokemon_data.get("name")?.as_str()?.to_string();
+    let primary_type_str = pokemon_data.get("primary_type")?.as_str()?;
+    let secondary_type_str = pokemon_data.get("secondary_type").and_then(|v| v.as_str());
+    let catch_rate = pokemon_data.get("catch_rate")?.as_u64()? as u32;
+
+    // Parse base stats
+    let base_stats = pokemon_data.get("base_stats")?;
+    let stats = Stat {
+        hp: base_stats.get("hp")?.as_u64()? as u32,
+        attack: base_stats.get("attack")?.as_u64()? as u32,
+        defense: base_stats.get("defense")?.as_u64()? as u32,
+        sp_attack: base_stats.get("sp_attack")?.as_u64()? as u32,
+        sp_defense: base_stats.get("sp_defense")?.as_u64()? as u32,
+        speed: base_stats.get("speed")?.as_u64()? as u32,
+    };
+
+    // Parse primary type
+    let primary_type = match primary_type_str {
+        "Normal" => PokemonType::Normal,
+        "Fire" => PokemonType::Fire,
+        "Water" => PokemonType::Water,
+        "Electric" => PokemonType::Electric,
+        "Grass" => PokemonType::Grass,
+        "Ice" => PokemonType::Ice,
+        "Fighting" => PokemonType::Fighting,
+        "Poison" => PokemonType::Poison,
+        "Ground" => PokemonType::Ground,
+        "Flying" => PokemonType::Flying,
+        "Psychic" => PokemonType::Psychic,
+        "Bug" => PokemonType::Bug,
+        "Rock" => PokemonType::Rock,
+        "Ghost" => PokemonType::Ghost,
+        "Dragon" => PokemonType::Dragon,
+        "Dark" => PokemonType::Dark,
+        "Steel" => PokemonType::Steel,
+        "Fairy" => PokemonType::Fairy,
+        _ => return None,
+    };
+
+    // Parse secondary type if present
+    let secondary_type = secondary_type_str.and_then(|t| {
+        match t {
+            "Normal" => Some(PokemonType::Normal),
+            "Fire" => Some(PokemonType::Fire),
+            "Water" => Some(PokemonType::Water),
+            "Electric" => Some(PokemonType::Electric),
+            "Grass" => Some(PokemonType::Grass),
+            "Ice" => Some(PokemonType::Ice),
+            "Fighting" => Some(PokemonType::Fighting),
+            "Poison" => Some(PokemonType::Poison),
+            "Ground" => Some(PokemonType::Ground),
+            "Flying" => Some(PokemonType::Flying),
+            "Psychic" => Some(PokemonType::Psychic),
+            "Bug" => Some(PokemonType::Bug),
+            "Rock" => Some(PokemonType::Rock),
+            "Ghost" => Some(PokemonType::Ghost),
+            "Dragon" => Some(PokemonType::Dragon),
+            "Dark" => Some(PokemonType::Dark),
+            "Steel" => Some(PokemonType::Steel),
+            "Fairy" => Some(PokemonType::Fairy),
+            _ => None,
+        }
+    });
+
+    // Create the Pokemon
+    let mut pokemon = Pokemon::new(
+        id,
+        name,
+        (primary_type, secondary_type),
+        stats,
+        catch_rate,
+    );
+
+    // === Phase 4: Load initial moves from JSON ===
+    if let Some(initial_moves) = pokemon_data.get("initial_moves")
+        .and_then(|v| v.as_array()) {
+        for move_id_value in initial_moves {
+            if let Some(move_id) = move_id_value.as_u64() {
+                if let Some(move_data) = get_move_by_id(move_id as u32) {
+                    pokemon.add_move(move_data);
+                }
+            }
+        }
     }
+
+    // Fallback mechanism: Ensure Pokemon has at least one move
+    if pokemon.moves.is_empty() {
+        if let Some(tackle) = get_move_by_id(1) {
+            pokemon.add_move(tackle);
+        } else {
+            // Last resort: use hardcoded default tackle move
+            pokemon.add_move(create_default_tackle());
+        }
+    }
+
+    Some(pokemon)
 }
+
+/*
+// OLD HARDCODED FUNCTIONS - TO BE REMOVED IN TASK 4.4
+// These functions are kept temporarily for reference but are no longer used
 
 // 妙蛙种子
 fn create_bulbasaur() -> Pokemon {
@@ -681,6 +772,7 @@ fn create_magikarp() -> Pokemon {
 
     pokemon
 }
+*/
 
 pub fn get_wild_pokemon() -> Pokemon {
     use rand::Rng;
@@ -688,4 +780,104 @@ pub fn get_wild_pokemon() -> Pokemon {
     let pokemon_ids = vec![1, 4, 7, 10, 25, 39, 54, 58, 63, 129];
     let id = pokemon_ids[rng.gen_range(0..pokemon_ids.len())];
     get_pokemon_by_id(id).unwrap()
+}
+
+// ============================================================================
+// Phase 3: Move Loading Functions
+// ============================================================================
+
+/// Get a move by its ID from the game data
+pub fn get_move_by_id(id: u32) -> Option<Move> {
+    let game_data = loader::get_game_data()?;
+
+    let move_data = game_data.moves.iter().find(|m| {
+        m.get("id").and_then(|v| v.as_u64()).map(|v| v as u32) == Some(id)
+    })?;
+
+    parse_move_from_json(move_data)
+}
+
+/// Parse a Move from JSON data
+fn parse_move_from_json(data: &serde_json::Value) -> Option<Move> {
+    let id = data.get("id")?.as_u64()? as u32;
+    let name = data.get("name")?.as_str()?.to_string();
+
+    // Handle both "type" and "move_type" field names
+    let type_str = data.get("type")
+        .or_else(|| data.get("move_type"))
+        .and_then(|v| v.as_str())?;
+
+    let category = data.get("category")?.as_str()?;
+
+    // Parse MoveType: Physical, Special, Status
+    let move_type = match category {
+        "Physical" => MoveType::Physical,
+        "Special" => MoveType::Special,
+        "Status" => MoveType::Status,
+        _ => return None,
+    };
+
+    // Parse PokemonType
+    let pokemon_type = parse_pokemon_type(type_str)?;
+
+    // Handle optional power and accuracy
+    let power = data.get("power")
+        .and_then(|v| v.as_u64())
+        .unwrap_or(0) as u32;
+
+    let accuracy = data.get("accuracy")
+        .and_then(|v| v.as_u64())
+        .unwrap_or(100) as u32;
+
+    let pp = data.get("pp")?.as_u64()? as u32;
+
+    Some(Move {
+        id,
+        name,
+        move_type,
+        pokemon_type,
+        power,
+        accuracy,
+        pp,
+        max_pp: pp,
+    })
+}
+
+/// Parse a Pokemon type string to PokemonType enum
+fn parse_pokemon_type(type_str: &str) -> Option<PokemonType> {
+    match type_str {
+        "Normal" => Some(PokemonType::Normal),
+        "Fire" => Some(PokemonType::Fire),
+        "Water" => Some(PokemonType::Water),
+        "Grass" => Some(PokemonType::Grass),
+        "Electric" => Some(PokemonType::Electric),
+        "Ice" => Some(PokemonType::Ice),
+        "Fighting" => Some(PokemonType::Fighting),
+        "Poison" => Some(PokemonType::Poison),
+        "Ground" => Some(PokemonType::Ground),
+        "Flying" => Some(PokemonType::Flying),
+        "Psychic" => Some(PokemonType::Psychic),
+        "Bug" => Some(PokemonType::Bug),
+        "Rock" => Some(PokemonType::Rock),
+        "Ghost" => Some(PokemonType::Ghost),
+        "Dragon" => Some(PokemonType::Dragon),
+        "Dark" => Some(PokemonType::Dark),
+        "Steel" => Some(PokemonType::Steel),
+        "Fairy" => Some(PokemonType::Fairy),
+        _ => None,
+    }
+}
+
+/// Create a default "Tackle" move as a fallback
+fn create_default_tackle() -> Move {
+    Move {
+        id: 1,
+        name: "撞击".to_string(),
+        move_type: MoveType::Physical,
+        pokemon_type: PokemonType::Normal,
+        power: 40,
+        accuracy: 100,
+        pp: 35,
+        max_pp: 35,
+    }
 }
